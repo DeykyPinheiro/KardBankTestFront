@@ -1,6 +1,25 @@
 import React, { useEffect, useState } from 'react';
+// import {
+//   Box,
+//   FormControl,
+//   FormLabel,
+//   Input,
+//   Button,
+//   Flex,
+//   Table,
+//   Thead,
+//   Tr,
+//   Th,
+//   Tbody,
+//   Td,
+//   VStack,
+//   useToast,
+// } from "@chakra-ui/react";
+
+
 import api from "../../api";
 import { UserEntity } from './components/entities/user.entity';
+import CardUser from './components/cards/CardUser';
 
 
 export default function Home() {
@@ -10,7 +29,6 @@ export default function Home() {
   useEffect(() => {
     listALL()
   }, [])
-
 
   async function saveUser() {
     //corpo ilustrativo para o exemplo
@@ -83,40 +101,39 @@ export default function Home() {
     return response
   }
 
-
-
-
   async function deleteUser() {
 
     var id = 16
 
     const response = api.delete(`/user/${id}`).then(
 
-      (response: any) =>{
+      (response: any) => {
         alert("Usuario Deletado!")
       },
-      (error: any) =>{
+      (error: any) => {
         alert("Falha ao Deletar!")
       }
     )
 
   }
 
-
-
-
-
-
-
-
-
   return (
     <>
       <h1>pq isso nao funcionando?</h1>
 
+      <h1>CRUD funcionando krai</h1>
       <button onClick={saveUser}>Cria Usuario</button>
       <button onClick={updateUser}>Atualizar Usuario</button>
       <button onClick={deleteUser}>deletar Usuario</button>
+
+      <ul>
+        {listUser.map((user: any) => (
+
+          // <p>{user.name}</p>
+          <CardUser key={user.id} id={user.id} name={user.name} lastName={user.lastName} email={user.email} birthDate={user.birthDate}></CardUser>
+        ))}
+        </ul>
+      
     </>
   )
 }
