@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 1em 1.2em;
+    /* margin-bottom: 2em; */
+    background-color: rgb(81, 187, 122);
+
+}
+
+.p {
+    color: #fff;
+}
