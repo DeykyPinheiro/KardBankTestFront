@@ -1,5 +1,7 @@
-import { UserEntity } from "../entities/user.entity";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { UserEntity } from "../entities/user.entity";
 export default function CardUser({ id, name, lastName, email, birthDate }: any) {
     // console.log("dento da lista " + user.email);
 
@@ -24,10 +26,23 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
 
 
     return (
-        <div>
-             <p>{name} {lastName} {formatBirthDate} {email} </p>
-            
-        </div>
+        // <p>{name} {lastName} {formatBirthDate} {email} </p>
+        <tr key={id}>
+            <td>{id}</td>
+            <td>{name}</td>
+            <td>{lastName}</td>
+            <td>{email}</td>
+            <td>{formatBirthDate}</td>
+            <td>
+                <button>
+                    <FontAwesomeIcon icon={faEdit} />
+                </button>
+                <button>
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+            </td>
+        </tr>
+
     )
 
 }
