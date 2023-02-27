@@ -2,12 +2,15 @@ import { ConfigProvider } from "antd";
 import { createContext, useEffect, useState } from "react";
 
 import api from "api";
+import { useRouter } from "next/router";
 
 
 
 type UserContextType = {
 
     listUser: any;
+    userUpdate: any,
+    setUserUpdate: (data: any) => void
     saveUser: (data: any) => void;
     updateUser: (data: any) => void;
     listALL: () => any;
@@ -18,8 +21,10 @@ export const UserContext = createContext({} as UserContextType);
 
 export default function UserProvider({ children }: any) {
 
-
+    const [userUpdate, setUserUpdate] = useState({});
     const [listUser, setListUser] = useState([]);
+    const router = useRouter();
+
 
     useEffect(() => {
         listALL()
@@ -65,23 +70,35 @@ export default function UserProvider({ children }: any) {
         })
     }
 
-    async function updateUser() {
+    async function updateUser(data: any) {
 
-        //corpo ilustrativo para o exemplo
+
+
+        // //corpo ilustrativo para o exemplo
+        // var user = {
+        //     id: 16,
+        //     name: "eu sou o numero 15",
+        //     lastName: "2",
+        //     email: "2105110@gmail.com",
+        //     birthDate: "2000-07-03T00:00:00",
+        //     "active": true
+        // }
+        // // fim do exemplo
+
         var user = {
-            id: 16,
-            name: "eu sou o numero 15",
-            lastName: "2",
-            email: "2105110@gmail.com",
-            birthDate: "2000-07-03T00:00:00",
-            "active": true
+            id: data.id,
+            name: data.name,
+            lastName: data.lastName,
+            birthDate: data.birthDate
         }
-        // fim do exemplo
-
 
         const response = await api.put(`/user`, user).then(
             (response: any) => {
                 alert("Usuario Atualizado!")
+                router
+                    .push('/')
+                    .then(() => window.scrollTo(0, 0))
+                    listALL()
 
             },
             (error: any) => {
@@ -92,9 +109,6 @@ export default function UserProvider({ children }: any) {
     }
 
     async function deleteUser(id: any) {
-
-        // // var id = 16
-        // alert("id para deletar: " + id)
 
         const response = api.delete(`/user/${id}`).then(
 
@@ -112,7 +126,7 @@ export default function UserProvider({ children }: any) {
     return (
         <ConfigProvider>
             <UserContext.Provider
-                value={{ saveUser, listALL, updateUser, deleteUser, listUser }}>
+                value={{ saveUser, listALL, updateUser, deleteUser, listUser, userUpdate, setUserUpdate }}>
                 {children}
             </UserContext.Provider>
         </ConfigProvider>

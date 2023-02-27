@@ -1,15 +1,22 @@
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+// import { Link } from 'react-router-dom';
+// import Link from "next/link";
+
+
+
+
 
 import { UserEntity } from "../entities/user.entity";
+
 export default function CardUser({ id, name, lastName, email, birthDate }: any) {
     // console.log("dento da lista " + user.email);
 
-    const { deleteUser } = useContext(UserContext);
-
-
+    const { deleteUser, setUserUpdate } = useContext(UserContext);
 
 
     const convertDate = (date: any) => {
@@ -25,12 +32,7 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
 
     var formatBirthDate = convertDate(birthDate);
 
-
-
-
-
     return (
-        // <p>{name} {lastName} {formatBirthDate} {email} </p>
         <tr key={id}>
             <td>{id}</td>
             <td>{name}</td>
@@ -38,9 +40,15 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
             <td>{email}</td>
             <td>{formatBirthDate}</td>
             <td>
-                <button>
+                <Link
+                    href={{
+                        pathname: '/editUser',
+                        query: { id, name, lastName, birthDate }
+                    }}
+                >
+
                     <FontAwesomeIcon icon={faEdit} />
-                </button>
+                </Link>
                 <button onClick={() => deleteUser(id)}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
@@ -50,3 +58,6 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
     )
 
 }
+
+
+// { id, name, lastName, formatBirthDate }
