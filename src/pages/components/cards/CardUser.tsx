@@ -1,9 +1,13 @@
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 import { UserEntity } from "../entities/user.entity";
 export default function CardUser({ id, name, lastName, email, birthDate }: any) {
     // console.log("dento da lista " + user.email);
+
+    const { deleteUser } = useContext(UserContext);
 
 
 
@@ -37,7 +41,7 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
                 <button>
                     <FontAwesomeIcon icon={faEdit} />
                 </button>
-                <button>
+                <button onClick={() => deleteUser(id)}>
                     <FontAwesomeIcon icon={faTrashAlt} />
                 </button>
             </td>

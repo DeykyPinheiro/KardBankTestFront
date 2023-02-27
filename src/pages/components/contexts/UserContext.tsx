@@ -6,7 +6,7 @@ import api from "api";
 
 
 type UserContextType = {
-    
+
     listUser: any;
     saveUser: (data: any) => void;
     updateUser: (data: any) => void;
@@ -25,29 +25,24 @@ export default function UserProvider({ children }: any) {
         listALL()
     }, [])
 
-    async function saveUser() {
-        //corpo ilustrativo para o exemplo
+    async function saveUser(data: any) {
+
         var user = {
-            name: "test",
-            lastName: "2",
-            email: "2105110@gmail.com",
-            birthDate: "1996-07-03T00:00:00"
+            name: data.name,
+            lastName: data.lastName,
+            email: data.email,
+            birthDate: data.birthDate
         }
-        // fim do exemplo
-
-
-
-
 
         const response = await api.post(`/user`, user).then(
             (response: any) => {
                 alert("Usuario Cadastrado!")
-
             },
             (error: any) => {
                 alert("Usuario Ja existe!")
             }
         )
+        listALL()
         return response
     }
 
@@ -98,7 +93,8 @@ export default function UserProvider({ children }: any) {
 
     async function deleteUser(id: any) {
 
-        // var id = 16
+        // // var id = 16
+        // alert("id para deletar: " + id)
 
         const response = api.delete(`/user/${id}`).then(
 
