@@ -2,7 +2,7 @@ import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 // import { Link } from 'react-router-dom';
 // import Link from "next/link";
@@ -13,21 +13,22 @@ import { UserContext } from "../contexts/UserContext";
 
 import { UserEntity } from "../entities/user.entity";
 
-export default function CardUser({ id, name, lastName, email, birthDate }: any) {
-    // console.log("dento da lista " + user.email);
+export default function CardUser({ id, name, lastName, email, birthDate,
+    phonenumber, street, number }: any) {
 
-    const { deleteUser, setUserUpdate } = useContext(UserContext);
+    const { deleteUser, setUserUpdate, listAllPhoneNumber, listPhoneNumber } = useContext(UserContext);
 
 
-    const convertDate = (date: any) => {
-        var birthDateString = date.toString()
-        birthDateString = birthDateString.slice(0, 10)
-        birthDateString = birthDateString.split("-")
-        var year = birthDateString[0]
-        var month = birthDateString[1]
-        var day = birthDateString[2]
-        birthDateString = `${day}/${month}/${year}`
-        return birthDateString
+
+    function convertDate(date: any) {
+        var birthDateString = date.toString();
+        birthDateString = birthDateString.slice(0, 10);
+        birthDateString = birthDateString.split("-");
+        var year = birthDateString[0];
+        var month = birthDateString[1];
+        var day = birthDateString[2];
+        birthDateString = `${day}/${month}/${year}`;
+        return birthDateString;
     }
 
     var formatBirthDate = convertDate(birthDate);
@@ -38,6 +39,9 @@ export default function CardUser({ id, name, lastName, email, birthDate }: any) 
             <td>{name}</td>
             <td>{lastName}</td>
             <td>{email}</td>
+            <td>{formatBirthDate}</td>
+            <td>{phonenumber}</td>
+            <td>{formatBirthDate}</td>
             <td>{formatBirthDate}</td>
             <td>
                 <Link

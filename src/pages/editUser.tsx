@@ -2,6 +2,7 @@ import { Card, Form, Button } from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { UserContext } from "./components/contexts/UserContext";
+import { Col, Row, Container } from 'react-bootstrap';
 
 
 export default function EditUser() {
@@ -40,47 +41,155 @@ export default function EditUser() {
     };
 
     return (
-        <Card>
-            <Card.Body>
-                <Card.Title>Atulizacao de Usuário</Card.Title>
-                < Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formNome">
-                        <Form.Label>Nome</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Digite o nome"
-                            value={nameNew}
-                            onChange={(event) => setName(event.target.value)}
-                        />
-                    </Form.Group>
 
-                    <Form.Group controlId="formSobrenome">
-                        <Form.Label>Sobrenome</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Digite o sobrenome"
-                            value={lastNameNew}
-                            onChange={(event) => setLastname(event.target.value)}
-                        />
-                    </Form.Group>
+        <Container>
+            <Row>
+                <Col>
+
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Atulizacao de Usuário</Card.Title>
+                            < Form onSubmit={handleSubmit}>
+                                <Form.Group controlId="formNome">
+                                    <Form.Label>Nome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o nome"
+                                        value={nameNew}
+                                        onChange={(event) => setName(event.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group controlId="formSobrenome">
+                                    <Form.Label>Sobrenome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o sobrenome"
+                                        value={lastNameNew}
+                                        onChange={(event) => setLastname(event.target.value)}
+                                    />
+                                </Form.Group>
 
 
-                    <Form.Group controlId="formDataNascimento">
-                        <Form.Label>Data de Nascimento</Form.Label>
-                        <Form.Control
-                            type="date"
-                            placeholder="Digite a data de nascimento"
-                            value={birthDateNew}
-                            onChange={(event) => setBirthDate(event.target.value)}
-                        />
-                    </Form.Group>
+                                <Form.Group controlId="formDataNascimento">
+                                    <Form.Label>Data de Nascimento</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        placeholder="Digite a data de nascimento"
+                                        value={birthDateNew}
+                                        onChange={(event) => setBirthDate(event.target.value)}
+                                    />
+                                </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Atualizar
-                    </Button>
-                </Form>
-            </Card.Body>
-        </Card>
+                                <Button variant="primary" type="submit">
+                                    Atualizar
+                                </Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col>
+
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Atulizacao de Usuário</Card.Title>
+                            < Form onSubmit={handleSubmit}>
+                                <Form.Group controlId="formNome">
+                                    <Form.Label>Nome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o nome"
+                                        value={nameNew}
+                                        onChange={(event) => setName(event.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group controlId="formSobrenome">
+                                    <Form.Label>Sobrenome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o sobrenome"
+                                        value={lastNameNew}
+                                        onChange={(event) => setLastname(event.target.value)}
+                                    />
+                                </Form.Group>
+
+
+                                <Form.Group controlId="formDataNascimento">
+                                    <Form.Label>Data de Nascimento</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        placeholder="Digite a data de nascimento"
+                                        value={birthDateNew}
+                                        onChange={(event) => setBirthDate(event.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Button variant="primary" type="submit">
+                                    Atualizar
+                                </Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col>
+
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>Atulizacao de Usuário</Card.Title>
+                            < Form onSubmit={handleSubmit}>
+                                <Form.Group controlId="formNome">
+                                    <Form.Label>Nome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o nome"
+                                        value={nameNew}
+                                        onChange={(event) => setName(event.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Form.Group controlId="formSobrenome">
+                                    <Form.Label>Sobrenome</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder="Digite o sobrenome"
+                                        value={lastNameNew}
+                                        onChange={(event) => setLastname(event.target.value)}
+                                    />
+                                </Form.Group>
+
+
+                                <Form.Group controlId="formDataNascimento">
+                                    <Form.Label>Data de Nascimento</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        placeholder="Digite a data de nascimento"
+                                        value={birthDateNew}
+                                        onChange={(event) => setBirthDate(event.target.value)}
+                                    />
+                                </Form.Group>
+
+                                <Button variant="primary" type="submit">
+                                    Atualizar
+                                </Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+
+
+
+
+
+
+
+
+
+
+        </Container>
     )
 
 }
